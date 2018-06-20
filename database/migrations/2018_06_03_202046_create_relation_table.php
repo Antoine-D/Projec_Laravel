@@ -13,15 +13,15 @@ class CreateRelationTable extends Migration
      */
     public function up()
     {
-        Schema::create('relation', function (Blueprint $table) {
+        Schema::create('relations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idSender')->unsigned();
             $table->integer('idReceived')->unsigned();
             $table->integer('status');
             $table->timestamps();
 
-            $table->foreign('idSender')->references('id')->on('users');
-            $table->foreign('idReceived')->references('id')->on('users');
+            //$table->foreign('idSender')->references('id')->on('users');
+            //$table->foreign('idReceived')->references('id')->on('users');
         });
     }
 
@@ -32,6 +32,8 @@ class CreateRelationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('relation');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('relations');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

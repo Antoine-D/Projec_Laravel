@@ -28,6 +28,8 @@ class CreateThreadsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists(Models::table('threads'));
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

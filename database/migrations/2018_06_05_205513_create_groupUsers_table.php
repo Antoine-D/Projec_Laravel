@@ -19,8 +19,8 @@ class CreateGroupUsersTable extends Migration
             $table->integer('idGroup')->unsigned();
             $table->timestamps();
 
-            $table->foreign('idUser')->references('id')->on('users');
-            $table->foreign('idGroup')->references('id')->on('group');
+            //$table->foreign('idUser')->references('id')->on('users');
+            //$table->foreign('idGroup')->references('id')->on('group');
         });
     }
 
@@ -31,6 +31,8 @@ class CreateGroupUsersTable extends Migration
      */
     public function down()
     {
-        //
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('groupUsers');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

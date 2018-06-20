@@ -19,7 +19,7 @@ class CreateMessageTable extends Migration
             $table->string('content');
             $table->timestamps();
 
-            $table->foreign('author')->references('id')->on('users');
+            //$table->foreign('author')->references('id')->on('users');
         });
 
     }

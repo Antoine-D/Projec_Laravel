@@ -16,8 +16,8 @@ class CreateFriendsTable extends Migration
         Schema::create('friends', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('friend_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('friend_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('friend_id')->references('id')->on('users');
             $table->primary(['user_id', 'friend_id']);
         });
     }
@@ -29,6 +29,8 @@ class CreateFriendsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('friend_user');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('friends');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -19,7 +19,6 @@
                 <tr>
                     <th scope="row">{{ $key +1}}</th>
                         <td>{{ $user->name}}</td>
-                        <td>{{$user->status}}</td>
                     <td>
                         {!! Form::open(['url' => 'add/'.$user->id.'']) !!}
                             @if($user->status == -1)

@@ -31,7 +31,7 @@ class FriendsController
             return view('addFriends', ['error' => 'Aucune demande']);
         }
         return view('addFriends',['users' => $demands]);
-    }
+    }//
 
     public function acceptDemand($idAccepted){
         \App\Relation::where('idReceived',Auth::user()->id)->where('idSender',$idAccepted)->where('status',0)->update(array('status'=> 1));

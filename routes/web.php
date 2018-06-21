@@ -40,12 +40,9 @@ Route::get('/addedFriends', 'FriendsController@getDemand');
 
 Route::get('/acceptFriend/{idAccepted}', 'FriendsController@acceptDemand');
 
-Route::post('/add', function () {
-    return view('welcome');
-});
-
 
 Route::post('/search', 'SearchController@search');
+
 Route::post('/searchfriends', 'SearchController@searchFriends');
 
 

@@ -17,7 +17,6 @@ class FriendsController
     {
         $user = new \App\User();
         $friends = $user->getFriends();
-
         if (count($friends) == 0) {
             return view('friends', ['error' => 'Aucun amis']);
         }
@@ -28,13 +27,14 @@ class FriendsController
         $user = new \App\User();
         $demands = $user->getDemand();
         if(count($demands) == 0) {
-            return view('addFriends', ['error' => 'Aucune demande']);
+            return view('friends', ['error' => 'Aucune demande']);
         }
-        return view('addFriends',['users' => $demands]);
+        return view('friends',['friends' => $demands]);
     }//
 
     public function acceptDemand($idAccepted){
+        $user = new \App\User();
         \App\Relation::where('idReceived',Auth::user()->id)->where('idSender',$idAccepted)->where('status',0)->update(array('status'=> 1));
-        return view('addFriends');
+        return view('friends',['friends' => $user->getDemand()]);
     }
 }

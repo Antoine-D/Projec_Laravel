@@ -29,5 +29,6 @@ class RelationController
                     'created_at' => date('y-m-d H:i:s'))
             );
         }
+        return view('search');
     }
 }

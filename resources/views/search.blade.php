@@ -11,7 +11,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Ajouter</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -26,7 +26,7 @@
                             @elseif($user->status == 0)
                                 {!! Form::submit('Demande en attente',array('class' => 'btn btn-success','disabled' => 'disabled')) !!}
                             @elseif($user->status == 1)
-                                {!! Form::submit('Envoyer un message',array('class' => 'btn btn-success')) !!}
+                                <a href="{{ url('sendMessage/'.$user->id) }}" class="btn btn-success">Envoyez un message</a>
                             @endif
                         {!! Form::close() !!}
                     </td>
@@ -34,7 +34,6 @@
             @endforeach
             <tbody>
         </table>
-        <p></p>
 
 
     @endif

@@ -43,9 +43,6 @@ Route::get('/acceptFriend/{idAccepted}', 'FriendsController@acceptDemand');
 
 Route::post('/search', 'SearchController@search');
 
-Route::post('/searchfriends', 'SearchController@searchFriends');
-
-
 Route::post('/add/{idReceived}','RelationController@add');
 
 //Route::post('/edit/{', 'GroupController@edit');
